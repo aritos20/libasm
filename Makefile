@@ -20,19 +20,20 @@ NAME = libasm.a
 FLAGS = -Wall -Werror -Wextra
 
 %.o:		%.s
-				-@nasm -g -f macho64 $<
+				-nasm -g -f macho64 $<
 
 $(NAME): 	$(OBJS)
-				-@ar rc $(NAME) $(OBJS)
-				-@ranlib $(NAME)
+				-ar rc $(NAME) $(OBJS)
+				-ranlib $(NAME)
 
 all: 		$(NAME)
 
 clean:
-				-@rm -f $(OBJS)
+				-rm -f $(OBJS)
 
 fclean: 	clean
-				-@rm -f $(NAME) libasm
+				-rm -f $(NAME) libasm
+				-rm -rf libasm.dSYM
 
 re:			fclean all
 
