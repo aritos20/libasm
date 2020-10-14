@@ -7,12 +7,16 @@ _ft_write:
 	mov			rax, 0x2000004
 	syscall
 	jc			_error
-	ret
+	jmp			_exit
 
 _error:
-  mov     rdx, rax
+  mov     r15, rax
   call    ___error
-  mov     [rax], rdx
+  mov     [rax], r15
   mov     rax, -1
   ret
+
+_exit:
+	ret
+
   

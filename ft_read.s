@@ -7,13 +7,13 @@ _ft_read:
 	mov			rax, 0x2000003
 	syscall
 	jc			_error
-	jmp     	_exit
+	jmp     		_exit
 
 _error:
-  	mov			r15, rax
+  	mov		r15, rax
  	call		___error
-  	mov			[rax], r15
-  	mov			rax, -1
+  	mov		[rax], r15
+  	mov		rax, -1
  	ret
 
 _exit:
