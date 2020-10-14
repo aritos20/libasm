@@ -1,215 +1,175 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: agianico <agianico@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 16:54:21 by agianico          #+#    #+#             */
-/*   Updated: 2020/10/07 17:09:07 by agianico         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libasm.h"
 
-void	check_write(void)
+void	check_ft_tests()
 {
-	char *hello_world;
-	char *empty;
+	char    *buff;
 
-	hello_world = "Coucou\n";
-	empty = "";
-	printf("\n================================\n");
-	printf("========== FT_WRITE ============\n");
-	printf("================================\n\n");
-	printf("%-20s: \"%s\"\n", "char *", hello_world);
-	printf("%-20s: \"Libc:%zu\"\n", "libc", write(1, hello_world, 7));
-	printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(1, hello_world, 7));
-	printf("\n");
-	printf("%-20s: \"%s\"\n", "char *", empty);
-	printf("%-20s: \"Libc:%zu\"\n", "libc", write(1, empty, 0));
-	printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(1, empty, 0));
-	printf("\n");
-	printf("%-20s: \"%s\"\n", "char *", hello_world);
-	printf("%-20s: \"Libc:%zu\"\n", "libc", write(-7, NULL, 7));
-	printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(-7, NULL, 7));
+    	buff = malloc(sizeof(char) * 1);
+	printf("####################### FT_STRLEN ##########################\n");
+	printf("str = \"%s\" \n", "");
+	printf("%-20s: \"%lu\"\n", "strlen",  strlen(""));
+	printf("%-20s: \"%zu\"\n", "ft_strlen",  ft_strlen(""));
+	printf("------------------------------------------------------------\n");
+	printf("str = \"%s\" \n", "Hola Mundo!");
+	printf("%-20s: \"%lu\"\n", "strlen",  strlen("Hola Mundo!"));
+	printf("%-20s: \"%zu\"\n", "ft_strlen",  ft_strlen("Hola Mundo!"));
+	printf("------------------------------------------------------------\n");
+	printf("str = \"%s\" \n", "0123456789");
+	printf("%-20s: \"%lu\"\n", "strlen",  strlen("0123456789"));
+	printf("%-20s: \"%zu\"\n", "ft_strlen",  ft_strlen("0123456789"));
+	printf("------------------------------------------------------------\n\n");
+	printf("####################### FT_STRCMP ##########################\n");
+	printf("str1 = \"%s\"\nstr2 = \"%s\"\n", "", "");
+	printf("%-20s: \"%d\"\n", "strcmp",  strcmp("",  ""));
+	printf("%-20s: \"%d\"\n", "ft_strcmp",  ft_strcmp("",  ""));
+	printf("------------------------------------------------------------\n");
+	printf("str1 = %s\nstr2 = %s\n", "hola", "hola");
+	printf("%-20s: \"%d\"\n", "strcmp",  strcmp("hola",  "hola"));
+	printf("%-20s: \"%d\"\n", "ft_strcmp",  ft_strcmp("hola",  "hola"));
+	printf("------------------------------------------------------------\n");
+	printf("str1 = %s\nstr2 = %s\n", "hola mundo", "hola");
+	printf("%-20s: \"%d\"\n", "strcmp",  strcmp("hola mundo",  "hola"));
+	printf("%-20s: \"%d\"\n", "ft_strcmp",  ft_strcmp("hola mundo",  "hola"));
+	printf("------------------------------------------------------------\n");
+	printf("str1 = %s\nstr2 = %s\n", "hola", "hola buenas");
+	printf("%-20s: \"%d\"\n", "strcmp",  strcmp("hola",  "hola buenas"));
+	printf("%-20s: \"%d\"\n", "ft_strcmp",  ft_strcmp("hola",  "hola buenas"));
+	printf("------------------------------------------------------------\n\n");
+	printf("####################### FT_STRDUP ##########################\n");
+	printf("str = \"%s\" \n", "");
+	printf("%-20s: \"%s\"\n", "strdup",  strdup(""));
+	printf("%-20s: \"%s\"\n", "ft_strdup",  ft_strdup(""));
+	printf("------------------------------------------------------------\n");
+	printf("str = %s \n", "AmongUs");
+	printf("%-20s: \"%s\"\n", "strdup",  strdup("AmongUs"));
+	printf("%-20s: \"%s\"\n", "ft_strdup",  ft_strdup("AmongUs"));
+	printf("------------------------------------------------------------\n");
+	printf("str = %s \n", "coronavirus :(");
+	printf("%-20s: \"%s\"\n", "strdup",  strdup("coronavirus :("));
+	printf("%-20s: \"%s\"\n", "ft_strdup",  ft_strdup("coronavirus :("));
+	printf("------------------------------------------------------------\n");
+	printf("str = %s\n\nstrdup =\n%s\nft_strdup =\n%s\n", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed sagittis ligula. Sed sed egestas diam, quis lacinia justo. Vivamus et dolor et diam porttitor.",
+		strdup("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed sagittis ligula. Sed sed egestas diam, quis lacinia justo. Vivamus et dolor et diam porttitor."),
+		ft_strdup("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed sagittis ligula. Sed sed egestas diam, quis lacinia justo. Vivamus et dolor et diam porttitor."));
+	printf("------------------------------------------------------------\n\n");
+	printf("####################### FT_STRCPY ##########################\n");
+	printf("str = %s\nstrcpy = %s  ft_strcpy = %s\n", "Hola Mundo", strcpy(buff, "Hola Mundo"), ft_strcpy(buff, "Hola Mundo"));
+	printf("------------------------------------------------------------\n");
+	printf("str = %s\n\nstrcpy =\n%s\nft_strcpy =\n%s\n", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tincidunt quam. Sed quis mollis metus. Phasellus purus erat, commodo non vulputate vel, tincidunt ut nunc. Vivamus ac elementum diam. Orci varius natoque penatibus et magnis dis parturient montes egestas.",
+		strcpy(buff, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tincidunt quam. Sed quis mollis metus. Phasellus purus erat, commodo non vulputate vel, tincidunt ut nunc. Vivamus ac elementum diam. Orci varius natoque penatibus et magnis dis parturient montes egestas."),
+		ft_strcpy(buff, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tincidunt quam. Sed quis mollis metus. Phasellus purus erat, commodo non vulputate vel, tincidunt ut nunc. Vivamus ac elementum diam. Orci varius natoque penatibus et magnis dis parturient montes egestas."));
+	printf("------------------------------------------------------------\n\n");
 }
 
-void	check_read(void)
+void	check_ft_write()
+{
+	char	buffer[604] = "In measure theory, a branch of mathematics, the Lebesgue measure, named after French mathematician Henri Lebesgue,\nis the standard way of assigning a measure to subsets of n-dimensional Euclidean space. For n = 1, 2, or 3, it\ncoincides with the standard measure of length, area, or volume. In general, it is also called n-dimensional\nvolume, n-volume, or simply volume.[1] It is used throughout real analysis, in particular to define Lebesgue\nintegration. Sets that can be assigned a Lebesgue measure are called Lebesgue-measurable; the measure of the\nLebesgue-measurable set A is here denoted by λ(A).";
+	int 	fd;
+	int 	rlibc;
+	int		rlibasm;
+
+	printf("######################## FT_WRITE ##########################\n");
+	printf("========================= Text try ========================>\n");
+	fd = open("write.txt", O_WRONLY);
+	rlibc = write(fd, buffer, 603);
+	printf("%-20s: \"%d\"\n", "write", rlibc);		
+	close(fd);
+	
+	fd = open("write.txt", O_WRONLY);
+	rlibasm = ft_write(fd, buffer, 603);
+	printf("%-20s: \"%d\"\n", "ft_write", rlibasm);	
+	close(fd);
+	printf("------------------------------------------------------------\n");
+
+	printf("======================== Crash try ========================>\n");
+	fd = open("wrong", O_WRONLY);
+	rlibc = write(fd, buffer, 603);
+	perror("write errno");
+	printf("%-20s: \"%d\"\n", "write", rlibc);	
+	close(fd);
+	printf("\n");
+	
+	errno = 100;
+	fd = open("wrong", O_WRONLY);
+	rlibasm = ft_write(fd, buffer, 603);
+	perror("ft_write errno");
+	printf("%-20s: \"%d\"\n", "ft_write", rlibasm);	
+	close(fd);
+	printf("------------------------------------------------------------\n");
+	
+	printf("======================== Screen try =======================>\n");
+	printf("\n");
+	rlibc = write(1, buffer, 603);
+	printf("\n%-20s: \"%d\"\n\n", "write", rlibc);
+	close(fd);
+	
+	rlibasm = ft_write(1, buffer, 603); 
+	printf("\n%-20s: \"%d\"\n", "ft_write", rlibasm);	
+	close(fd);	
+	printf("\n");
+}
+
+void	check_ft_read()
 {
 	int		fd;
-	char	buff1[891];
-	int		ret;
+	int		rlibc;
+	int		rlibasm;
+	char	buffer[900];
 
+	printf("######################## FT_READ ###########################\n");
+	printf("====================== Open field try =====================>\n");
 	fd = open("main.c", O_RDONLY);
-	ret = 1;
-	printf("\n================================\n");
-	printf("========== FT_READ =============\n");
-	printf("================================\n\n");
-	printf("%-20s: \n", "header main.c | libc ");
-	ret = read(fd, buff1, 890);
-	buff1[ret] = 0;
-	printf("[return : %d]\n|%s|\n\n", ret, buff1);
+	rlibc = read(fd, buffer, 890);
+	printf("%-20s: \"%d\"\n", "read", rlibc);
 	close(fd);
 	fd = open("main.c", O_RDONLY);
-	clear_buffer(buff1, 891);
-	printf("%-20s: \n", "header main.c | libasm ");
-	ret = ft_read(fd, buff1, 890);
-	buff1[ret] = 0;
-	printf("[return : %d]\n|%s|\n\n", ret, buff1);
-	clear_buffer(buff1, 891);
+	rlibasm = ft_read(fd, buffer, 890);
+	printf("%-20s: \"%d\"\n", "ft_read", rlibasm);
 	close(fd);
-	fd = open("text.txt", O_RDONLY);
-	printf("%-20s: \n", "file test | libc ");
-	check_read_aux(fd, read(fd, buff1, 890), buff1);
-}
-
-void	check_read_aux(int fd, int ret, char *buff1)
-{
-	buff1[ret] = 0;
-	printf("[return : %d]\n|%s|\n\n", ret, buff1);
+	printf("------------------------------------------------------------\n");
+	printf("========================= Text try ========================>\n");
+	fd = open("hola.txt", O_RDONLY);
+	rlibc = read(fd, buffer, 50);
 	close(fd);
-	fd = open("text.txt", O_RDONLY);
-	clear_buffer(buff1, 891);
-	printf("%-20s: \n", "file test | libasm ");
-	ret = ft_read(fd, buff1, 890);
-	buff1[ret] = 0;
-	printf("[return : %d]\n|%s|\n\n", ret, buff1);
-	clear_buffer(buff1, 891);
+	printf("%-20s: \"%d\"\n", "read", rlibc);
+	fd = open("hola.txt", O_RDONLY);
+	rlibasm = ft_read(fd, buffer, 50);
+	printf("%-20s: \"%d\"\n", "ft_read", rlibc);
 	close(fd);
+	printf("------------------------------------------------------------\n");
+	printf("======================== Crash try ========================>\n");
+	printf("\n");
 	fd = open("wrong", O_RDONLY);
-	printf("%-20s: \n", "wrong | libc ");
-	ret = read(fd, buff1, 890);
-	buff1[ret] = 0;
-	printf("[return : %d]\n|%s|\n\n", ret, buff1);
+	rlibc = read(fd, buffer, 890);
+	perror("read errno");
+	printf("%-20s: \"%d\"\n", "read", rlibc);
 	close(fd);
+	printf("\n");	
+	errno = 100;
 	fd = open("wrong", O_RDONLY);
-	clear_buffer(buff1, 891);
-	printf("%-20s: \n", "wrong | libasm ");
-	ret = ft_read(fd, buff1, 890);
-	buff1[ret] = 0;
-	printf("[return : %d]\n|%s|\n\n", ret, buff1);
-	clear_buffer(buff1, 891);
+	rlibasm = ft_read(fd, buffer, 890);
+	perror("ft_read errno");
+	printf("%-20s: \"%d\"\n", "ft_read", rlibasm);
 	close(fd);
-}
-
-void	check_strdup(void)
-{
-	char *save;
-
-	printf("\n================================\n");
-	printf("========== FT_STRDUP ===========\n");
-	printf("================================\n\n");
-	printf("%-20s: \"%s\"\n", "char *", "Hello world !");
-	save = strdup("Hello world !");
-	printf("%-20s: \"%s\"\n", "libc", save);
-	free(save);
-	save = NULL;
-	save = ft_strdup("Hello world !");
-	printf("%-20s: \"%s\"\n", "libasm", save);
-	free(save);
-	save = NULL;
 	printf("\n");
-	printf("%-20s: \"%s\"\n", "char *", "");
-	save = strdup("");
-	printf("%-20s: \"%s\"\n", "libc", save);
-	free(save);
-	save = NULL;
-	save = ft_strdup("");
-	printf("%-20s: \"%s\"\n", "libasm", save);
-	free(save);
-	save = NULL;
+	printf("------------------------------------------------------------\n");
+	printf("======================== Screen try =======================>\n");
 	printf("\n");
+	rlibc = read(0, buffer, 890);
+	printf("%-20s: \"%d\"\n", "read", rlibc);	
+	close(fd);
+	printf("\n");	
+	rlibasm = ft_read(0, buffer, 890);
+	printf("%-20s: \"%d\"\n", "ft_read", rlibasm);
+	close(fd);
+	printf("------------------------------------------------------------\n\n");
+
 }
 
-void	check_strlen(void)
+int main(void)
 {
-	printf("\n================================\n");
-	printf("========== FT_STRLEN ===========\n");
-	printf("================================\n\n");
-	printf("%-20s: \"%s\"\n", "char *", "");
-	printf("%-20s: 0\n", "expected lenght");
-	printf("%-20s: %zu\n", "libc", strlen(""));
-	printf("%-20s: %zu\n", "libasm", ft_strlen(""));
-	printf("\n");
-	printf("%-20s: \"%s\"\n", "char *", "Hello world !");
-	printf("%-20s: 13\n", "expected lenght");
-	printf("%-20s: %zu\n", "libc", strlen("Hello world !"));
-	printf("%-20s: %zu\n", "libasm", ft_strlen("Hello world !"));
-	printf("\n");
-	printf("%-20s: \"%s\"\n", "char *", "abcdefghijklmnopqrstuvwxyz");
-	printf("%-20s: 26\n", "expected lenght");
-	printf("%-20s: %zu\n", "libc", strlen("abcdefghijklmnopqrstuvwxyz"));
-	printf("%-20s: %zu\n", "libasm", ft_strlen("abcdefghijklmnopqrstuvwxyz"));
-	printf("\n");
-}
-
-void	clear_buffer(char *buffer, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-		buffer[i++] = 0;
-}
-
-void	check_strcpy(void)
-{
-	char buffer[30];
-
-	printf("\n================================\n");
-	printf("========== FT_STRCPY ===========\n");
-	printf("================================\n\n");
-	printf("%-20s: \"%s\"\n", "char []", "");
-	printf("%-20s: buffer[50]\n", "copy to");
-	printf("%-20s: \"%s\"\n", "libc", strcpy(buffer, ""));
-	clear_buffer(buffer, 30);
-	printf("%-20s: \"%s\"\n\n", "libasm", ft_strcpy(buffer, ""));
-	clear_buffer(buffer, 30);
-	printf("%-20s: \"%s\"\n", "char []", "Hello world !");
-	printf("%-20s: buffer[50]\n", "copy to");
-	printf("%-20s: \"%s\"\n", "libc", strcpy(buffer, "Hello world !"));
-	clear_buffer(buffer, 30);
-	printf("%-20s: \"%s\"\n\n", "libasm", ft_strcpy(buffer, "Hello world !"));
-	clear_buffer(buffer, 30);
-	printf("%-20s: \"%s\"\n", "char []", "abcdefghijklmnopqrstuvwxyz");
-	printf("%-20s: buffer[50]\n", "copy to");
-	printf("%-20s: \"%s\"\n", "libc", strcpy(buffer,
-	"abcdefghijklmnopqrstuvwxyz"));
-	clear_buffer(buffer, 30);
-	printf("%-20s: \"%s\"\n\n", "libasm", ft_strcpy(buffer,
-	"abcdefghijklmnopqrstuvwxyz"));
-	clear_buffer(buffer, 30);
-}
-
-void	check_strcmp(void)
-{
-	printf("\n================================\n");
-	printf("========== FT_STRCMP ===========\n");
-	printf("================================\n\n");
-	printf("%-20s: \"%s\"\n", "char *", "Hola buenas");
-	printf("%-20s: \"%s\"\n", "compared to", "Hola qué tal");
-	printf("%-20s: \"%d\"\n", "libc", strcmp("Hola buenas", "Hola qué tal"));
-	printf("%-20s: \"%d\"\n\n", "libasm",
-	ft_strcmp("Hola buenas", "Hola qué tal"));
-	printf("%-20s: \"%s\"\n", "char *", "Hola buenas");
-	printf("%-20s: \"%s\"\n", "compared to", "Hola buenas");
-	printf("%-20s: \"%d\"\n", "libc", strcmp("Hola buenas", "Hola buenas"));
-	printf("%-20s: \"%d\"\n\n", "libasm",
-	ft_strcmp("Hola buenas", "Hola buenas"));
-	printf("%-20s: \"%s\"\n", "char *", "Hola buenas");
-	printf("%-20s: \"%s\"\n", "compared to", "");
-	printf("%-20s: \"%d\"\n", "libc", strcmp("Hola buenas", ""));
-	printf("%-20s: \"%d\"\n\n", "libasm", ft_strcmp("Hola buenas", ""));
-}
-
-int		main(void)
-{
-	errno = 0;
-	check_write();
-	check_read();
-	check_strdup();
-	check_strlen();
-	check_strcpy();
-	check_strcmp();
+	check_ft_tests();
+	check_ft_write();
+	check_ft_read();
+		return (0);
 }
